@@ -20,11 +20,8 @@
         <h4>{{currentWeather.city}}, {{currentWeather.country}}</h4>
         <p>Time: {{currentWeather.time}}</p>
         <p>Temperature now: <b>{{currentWeather.temp}}°</b></p>
-        <p>{{currentWeather.description}}</p>
+        <p>{{currentWeather.description | captilized}} <img src={{imgSource}} alt="weather_icon"></p>
         <p>Min: <b>{{currentWeather.temp_min}}°</b> - Max: <b>{{currentWeather.temp_max}}°</b></p>
-        <div>
-          <img src={{imgSource}} alt="weather_icon">
-        </div>
       </div>
 
       <ng-template #altBlock>

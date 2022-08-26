@@ -9,7 +9,8 @@ import { WeatherComponent } from './weather/weather.component'
 import { TodayComponent } from './weather/today/today.component';
 import { WeatherService } from './weather.service';
 import { WeekForecastComponent } from './weather/week-forecast/week-forecast.component';
-import { DataTransform } from './dateTransform.pipe';
+import { DataTransform } from './pipes/dateTransform.pipe';
+import { Captilized } from './pipes/captilized.pipe';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { DataTransform } from './dateTransform.pipe';
     TodayComponent,
     WeekForecastComponent,
     WeatherComponent,
-    DataTransform
+    DataTransform,
+    Captilized
   ],
   imports: [
     BrowserModule,
