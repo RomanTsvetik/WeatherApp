@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <h5 class="text-center my-3">Search</h5>
+      <form [formGroup]="weatherSearch" (ngSubmit)="getWeather(weatherSearch.value)">
+        <div class="form-group">
+          <input type="text" placeholder="Enter the city" name="city" id="city" class="form-control"
+            formControlName="city" ngModel required />
+        </div>
+        <div class="text-center">
+          <button type="submit" class="btn btn-success my-3" [disabled]="weatherSearch.invalid">Search</button>
+        </div>
+      </form>
+    </div>
+
+
+    <div class="col-md-8">
+      <h5 class="text-center my-3">Details:</h5>
+      <div class="text-center" *ngIf="currentWeather.show; else altBlock">
+        <h4>{{currentWeather.city}}, {{currentWeather.country}}</h4>
+        <p>Time: {{currentWeather.time}}</p>
+        <p>Temperature now: <b>{{currentWeather.temp}}°</b></p>
+        <p>{{currentWeather.description}}</p>
+        <p>Min: <b>{{currentWeather.temp_min}}°</b> - Max: <b>{{currentWeather.temp_max}}°</b></p>
+      </div>
+
+      <ng-template #altBlock>
+        <div class="text-center ">Here can be your advertisment</div>
+      </ng-template>
+    </div>
+  </div>
+  <div class="row">
+    <div *ngIf="display" class="my-3">
+      <app-week-forecast [week]="weekWeather.list" class="d-flex"></app-week-forecast>
+    </div>
+  </div>
+</div>

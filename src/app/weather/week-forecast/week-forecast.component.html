@@ -1,0 +1,4 @@
+<div *ngFor='let day of week; let d = index' class="m-2">
+  <p>{{day.dt | dateTransform}}</p>
+  <p>Temp: {{day.feels_like.day}}°</p>
+</div>
