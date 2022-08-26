@@ -26,6 +26,7 @@ export class TodayComponent implements OnInit {
     show: false
   }
 
+  imgSource!: string;
   display = false;
 
   constructor(private fb: FormBuilder, private http: HttpClient, private weatherService: WeatherService) { }
@@ -40,7 +41,7 @@ export class TodayComponent implements OnInit {
     this.weatherService.getData(inputValues.city)
       .subscribe((data: Weather) => {
         this.weatherInfo = { ...data };
-        console.log(this.weatherInfo)
+        console.log(this.weatherInfo.weather[0].icon)
         this.currentWeather.city = this.weatherInfo.name;
         this.currentWeather.country = this.weatherInfo.sys.country;
         this.currentWeather.time = new Date(this.weatherInfo.dt * 1000).toLocaleDateString()
@@ -49,7 +50,9 @@ export class TodayComponent implements OnInit {
         this.currentWeather.temp_max = this.weatherInfo.main.temp_max;
         this.currentWeather.description = this.weatherInfo.weather[0].description;
         this.currentWeather.show = true;
+        this.imgSource = `http://openweathermap.org/img/wn/${this.weatherInfo.weather[0].icon}.png`;
       })
+
     this.weatherSearch.reset();
     this.getWeekForecast(inputValues.city)
   }
